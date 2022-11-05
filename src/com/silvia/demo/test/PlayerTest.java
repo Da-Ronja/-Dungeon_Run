@@ -1,13 +1,14 @@
-package com.silvia.demo;
+package com.silvia.demo.test;
 
+import com.silvia.demo.GameItem;
+import com.silvia.demo.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PlayerTest1 {
+class PlayerTest {
     Player player;
 
     GameItem gameItem =  new GameItem("Monster Drop", 10);
@@ -36,7 +37,6 @@ class PlayerTest1 {
     @Test
     @DisplayName("Adding 10 experience for first win")
     public void playerWins() {
-        //player.setExperience(300);
         System.out.println(player.getExperience());
 
         player.playerWins(gameItem);

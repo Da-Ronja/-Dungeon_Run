@@ -1,5 +1,9 @@
-package com.silvia.demo;
+package com.silvia.demo.test;
 
+import com.silvia.demo.Battle;
+import com.silvia.demo.Game;
+import com.silvia.demo.Monster;
+import com.silvia.demo.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
@@ -28,19 +32,21 @@ class BattleTest {
     @DisplayName("If player is not dead, inBattle == true, inGame == true")
     public void battlePlayerNotDead() {
 
-        System.out.println("DEBUG playerHealth getHealth - " + Battle.playerHealth + " " + player.getHealth());
-        System.out.println("DEBUG inBattle inGame- " + Battle.inBattle + " " + Game.inGame);
+        assertTrue(Battle.battle(monster, player));
 
-        Battle.battle(monster, player);
-
-        assertTrue(Battle.playerHealth >= player.getMinHealth() && Battle.playerHealth <= player.getMaxHealth(),
+        assertTrue(Battle.playerHealth >= player.getMinHealth() &&
+                        Battle.playerHealth <= player.getMaxHealth(),
                 player.getMinHealth() + " is not in range " + player.getMaxHealth());
 
-        assertEquals(Battle.inBattle, Battle.playerHealth != 0, "Is dead and left Fight");
-        assertNotEquals(!Battle.inBattle, player.getHealth() != 0, "Is dead and left Fight");
+        assertEquals(Battle.inBattle, Battle.playerHealth != 0,
+                "Is dead and left Fight");
+        assertNotEquals(!Battle.inBattle, player.getHealth() != 0,
+                "Is dead and left Fight");
 
-        assertEquals(Game.inGame, Battle.playerHealth != 0, "Is dead and left game");
-        assertNotEquals(!Game.inGame, player.getHealth() != 0, "Is dead and left game");
+        assertEquals(Game.inGame, Battle.playerHealth != 0,
+                "Is dead and left game");
+        assertNotEquals(!Game.inGame, player.getHealth() != 0,
+                "Is dead and left game");
 
     }
 
@@ -57,11 +63,15 @@ class BattleTest {
 
         assertEquals(0, Battle.playerHealth);
         assertEquals(Battle.inBattle, player.died());
-        assertEquals(!Battle.inBattle, Battle.playerHealth == 0, "Is not dead and did not leave battle");
-        assertNotEquals(Battle.inBattle, player.getHealth() == 0, "Is not dead and did not leave Battle");
+        assertEquals(!Battle.inBattle, Battle.playerHealth == 0,
+                "Is not dead and did not leave battle");
+        assertNotEquals(Battle.inBattle, player.getHealth() == 0,
+                "Is not dead and did not leave Battle");
 
-        assertEquals(!Game.inGame, Battle.playerHealth == 0, "Is not dead and did not leave game");
-        assertNotEquals(Game.inGame, player.getHealth() == 0, "Is not dead and did not leave game");
+        assertEquals(!Game.inGame, Battle.playerHealth == 0,
+                "Is not dead and did not leave game");
+        assertNotEquals(Game.inGame, player.getHealth() == 0,
+                "Is not dead and did not leave game");
 
     }
 
@@ -71,14 +81,19 @@ class BattleTest {
 
         Battle.battle(monster, player);
 
-        assertTrue(Battle.monsterHealth >= monster.getMinHealth() && Battle.monsterHealth <= monster.getMaxHealth(),
+        assertTrue(Battle.monsterHealth >= monster.getMinHealth() &&
+                        Battle.monsterHealth <= monster.getMaxHealth(),
                 monster.getMinHealth() + " is not in range " + monster.getMaxHealth());
         assertEquals(!Battle.inBattle, monster.died());
-        assertEquals(Battle.inBattle, Battle.monsterHealth != 0, "Is dead and left Battle");
-        assertNotEquals(!Battle.inBattle, monster.getHealth() != 0, "Is dead and left Battle");
+        assertEquals(Battle.inBattle, Battle.monsterHealth != 0,
+                "Is dead and left Battle");
+        assertNotEquals(!Battle.inBattle, monster.getHealth() != 0,
+                "Is dead and left Battle");
 
-        assertEquals(Game.inGame, Battle.playerHealth != 0, "Is dead and left game");
-        assertNotEquals(!Game.inGame, player.getHealth() != 0, "Is dead and left game");
+        assertEquals(Game.inGame, Battle.playerHealth != 0,
+                "Is dead and left game");
+        assertNotEquals(!Game.inGame, player.getHealth() != 0,
+                "Is dead and left game");
 
     }
 
@@ -94,16 +109,20 @@ class BattleTest {
 
         assertEquals(0, Battle.monsterHealth);
         assertEquals(Battle.inBattle, monster.died());
-        assertEquals(!Battle.inBattle, Battle.monsterHealth == 0, "Is not dead and did not leave battle");
-        assertNotEquals(Battle.inBattle, monster.getHealth() == 0, "Is not dead and did not leave battle");
+        assertEquals(!Battle.inBattle, Battle.monsterHealth == 0,
+                "Is not dead and did not leave battle");
+        assertNotEquals(Battle.inBattle, monster.getHealth() == 0,
+                "Is not dead and did not leave battle");
 
-        assertEquals(!Game.inGame, Battle.monsterHealth == 0, "Is not dead and did not leave game");
-        assertNotEquals(Game.inGame, monster.getHealth() == 0, "Is not dead and did not leave game");
+        assertEquals(!Game.inGame, Battle.monsterHealth == 0,
+                "Is not dead and did not leave game");
+        assertNotEquals(Game.inGame, monster.getHealth() == 0,
+                "Is not dead and did not leave game");
 
     }
 
     @RepeatedTest(100)
-    @DisplayName("Calculate that the range always is in params for damage a fighter can give with no weapons at level 0")
+    @DisplayName("Calculate the range of damage a fighter can give with no weapons at level 0")
     void fightRangeInLevel0() {
         assertTrue(player.fight() >= 13 && player.fight() <= 26);
         assertFalse(player.fight() < 13 && player.fight() > 26);

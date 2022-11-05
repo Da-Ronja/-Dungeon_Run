@@ -1,34 +1,24 @@
 package com.silvia.demo;
 
+import java.util.Random;
+
 public class Fighter {
-    private String fighterName  = " ";
+    public Random random = new Random();
+    private final int maxNumber = 50;
+    private  String fighterName;
     private int level = 0;
-    private int experience = 0;
     private int baseDamage;
     private int health = 100;
     private int strength = 4;
     private int agility = 4;
     private int intelligence = 4;
-    private Weapon weapon;
-
-    protected Fighter(String fighterName) {
-        setFighterName(this.fighterName);
-        setLevel(level);
-        setExperience(experience);
-        setBaseDamage(baseDamage);
-        setHealth(health);
-        setStrength(strength);
-        setAgility(agility);
-        setIntelligence(intelligence);
-        setWeapon(weapon);
-    }
+    private GameItem weapon;
 
     protected Fighter() {
         setFighterName(fighterName);
-        setLevel(level);
-        setExperience(experience);
-        setBaseDamage(baseDamage);
         setHealth(health);
+        setLevel(level);
+        setBaseDamage(baseDamage);
         setStrength(strength);
         setAgility(agility);
         setIntelligence(intelligence);
@@ -51,23 +41,18 @@ public class Fighter {
         this.level = level;
     }
 
-    public int getExperience() {
-        return experience;
-    }
-
-    public void setExperience(int experience) {
-        this.experience = experience;
-    }
-
-    public int getMaxExperience() {
-        return 100;
-    }
-
     public int getBaseDamage() {
         return baseDamage;
     }
 
     public void setBaseDamage(int baseDamage) {
+        int maxBD = 15;
+        baseDamage = Math.min(baseDamage, maxBD);
+
+        if (baseDamage == maxBD) {
+            System.out.println("You have max baseDamage");
+        }
+
         this.baseDamage = baseDamage;
     }
 
@@ -83,11 +68,33 @@ public class Fighter {
         return 100;
     }
 
+    public int getMinHealth() {
+        return 0;
+    }
+
+    public void minHealthParam(int incomingDamage) {
+        int calculateHealth = getHealth() - incomingDamage;
+
+        setHealth(Math.max(calculateHealth, getMinHealth()));        // Math to hinder health to pass 0
+    }
+    public void gainHealthParam(int addHealth) {
+        int calculateHealth = getHealth() + addHealth;
+
+        setHealth(Math.min(calculateHealth, getMaxHealth()));
+    }
+
     public int getStrength() {
         return strength;
     }
 
     public void setStrength(int strength) {
+        strength = Math.min(strength, maxNumber);
+
+        if (strength == maxNumber) {
+            System.out.println("" +
+                    "You reached max strength");
+        }
+
         this.strength = strength;
     }
 
@@ -96,6 +103,12 @@ public class Fighter {
     }
 
     public void setAgility(int agility) {
+        agility = Math.min(agility, maxNumber);
+
+        if (agility == maxNumber) {
+            System.out.println("You reached max agility");
+        }
+
         this.agility = agility;
     }
 
@@ -104,29 +117,34 @@ public class Fighter {
     }
 
     public void setIntelligence(int intelligence) {
+        intelligence = Math.min(intelligence, maxNumber);
+
+        if (intelligence == maxNumber) {
+            System.out.println("You reached max intelligence");
+        }
+
         this.intelligence = intelligence;
     }
 
-    public Weapon getWeapon() {
+    public GameItem getWeapon() {
         return weapon;
     }
 
-    public void setWeapon(Weapon weapon) {
+    public void setWeapon(GameItem weapon) {
         this.weapon = weapon;
     }
 
     @Override
     public String toString() {
         return "Fighter{" +
-                "fighterName='" + fighterName + '\'' +
-                ", level=" + level +
-                ", experience=" + experience +
-                ", baseDamage=" + baseDamage +
+                "fighterName='" + fighterName +
                 ", health=" + health +
-                ", strength=" + strength +
-                ", agility=" + agility +
-                ", intelligence=" + intelligence +
-                ", weapon=" + weapon +
+                ", level=" + level + '\n' +
+                ", baseDamage=" + baseDamage + '\n' +
+                ", strength=" + strength + '\n' +
+                ", agility=" + agility + '\n' +
+                ", intelligence=" + intelligence + '\n' +
+                ", weapon=" + weapon + '\n' +
                 '}';
     }
 }

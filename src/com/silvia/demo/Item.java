@@ -42,27 +42,35 @@ public class Item {
         this.itemPrice = itemPrice;
     }
 
-
-    protected static List<Item> weaponList = List.of(                           //Immutable collection
+    protected static final List<Item> weaponList = List.of(  //Immutable collection MaxChars 12
             new Item("Hands", 0, 0),
             new Item("Dagger", 2, 5),
             new Item("Bow and arrow", 4, 10),
             new Item("Sword", 6, 15),
-            new Item("Fireball", 8, 20)
+            new Item("Ice axe", 8, 20),
+            new Item("Fireball", 10, 25)
     );
 
-    protected static List<Item> potionList = List.of(
-            new Item("Healing potion", 10, 10),
-            new Item("Healing potion", 20, 20),
-            new Item("Healing potion", 30, 30),
-            new Item("Healing potion", 50, 40)
+    protected static final List<Item> potionList = List.of(
+            new Item("Health potion", 10, 10),
+            new Item("Health potion", 20, 20),
+            new Item("Health potion", 30, 30),
+            new Item("Health potion", 50, 40)
     );
 
-    protected static List<Item> goldItemList = List.of(
+    protected static final List<Item> goldList = List.of(
             new Item("Gold pouch", 5),
             new Item("Gold pouch", 10),
             new Item("Gold pouch", 15),
             new Item("Gold pouch", 20)
     );
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "itemName='" + itemName + '\'' +
+                ", itemValue=" + itemValue +
+                '}';
+    }
 
 }
