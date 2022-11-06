@@ -100,6 +100,8 @@ public class Battle {
 
     // case 2 == Flee
     public static void fleeBattle() {
+        DisplayHeaders.fleeBattleHeader();
+        DisplayHeaders.blankLine(PrintColor.ANSI_BRIGHT_BG_WHITE);
         Menu.displayYesNoMenu(Menu.getAreYouSureText());
 
         switch (UserInput.yesNo()) {

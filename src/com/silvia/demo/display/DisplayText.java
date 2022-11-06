@@ -611,4 +611,12 @@ public class DisplayText {
         System.out.printf("%n");
     }
 
+    public static void deadPlayerText(Player player) {
+        System.out.printf("%s%s\t\tBefore you died in the wonders of the Dungeon you killed %s" +
+                        player.getKilledMonsters() + "\t\t %s\n" +
+                        "%s%s\t\tand reached level %s" + player.getLevel() + "\t\t\t\t\t\t\t\t\t\t\t\t %s\n",
+                PrintColor.ANSI_BRIGHT_BG_WHITE, PrintColor.ANSI_BLACK, PrintColor.ANSI_RED, PrintColor.ANSI_RESET,
+                PrintColor.ANSI_BRIGHT_BG_WHITE, PrintColor.ANSI_BLACK, PrintColor.ANSI_RED, PrintColor.ANSI_RESET);
+    }
+
 }

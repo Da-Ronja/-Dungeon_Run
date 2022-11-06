@@ -14,12 +14,12 @@ public class WriteFileSystem {
 
         try {
             if (myFile.createNewFile()) {
-                System.out.println("File created: " + myFile.getName());
+                System.out.println("\nA file with your stats was created: " + myFile.getName());
             } else {
-                System.out.println("File already exists.");
+                System.out.println("\nYour stats file already exists");
             }
         } catch (IOException e) {
-            System.out.println("An error occurred");
+
             e.printStackTrace();
         }
     }

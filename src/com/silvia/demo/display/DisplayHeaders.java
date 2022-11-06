@@ -22,6 +22,13 @@ public class DisplayHeaders {
         DisplayHeaders.underLine();
     }
 
+    public static void fleeBattleHeader() {
+        System.out.printf("%s\t\t\t\t\t\t  F L E E  B A T T L E  \t\t\t\t\t\t %s%n",
+                PrintColor.ANSI_BG_BLACK, PrintColor.ANSI_RESET);
+
+        DisplayHeaders.underLine();
+    }
+
     public static void fightHeader() {
         System.out.printf("%s\t\t\t\t\t\t\t\t F I G H T \t\t\t\t\t\t\t\t %s%n",
                 PrintColor.ANSI_BG_BLACK, PrintColor.ANSI_RESET);
@@ -65,6 +72,15 @@ public class DisplayHeaders {
                 PrintColor.ANSI_BRIGHT_BG_WHITE, PrintColor.ANSI_BG_BLACK, PrintColor.ANSI_WHITE,
                 PrintColor.ANSI_BRIGHT_BG_WHITE, PrintColor.ANSI_RESET
         );
+    }
+
+    public static void youDiedHeader() {
+
+        System.out.printf("%s\t\t\t\t\t\t   Y O U  A R E  D E A D   \t\t\t\t\t\t %s%n",
+                PrintColor.ANSI_BG_BLACK, PrintColor.ANSI_RESET);
+
+        DisplayHeaders.underLine();
+
     }
 
     public static void monsterHeader(Fighter fighter) {

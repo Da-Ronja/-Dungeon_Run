@@ -9,6 +9,9 @@ public class Game {
 
     public static void game() {
         gameIntro();
+
+        gameEnd();
+
         gameScene();
         gameEnd();
     }
@@ -94,14 +97,15 @@ public class Game {
     }
 
     private static void gameEnd() {
-        System.out.println("Game has Ended");
-        System.out.println(
-                "Before you left all the wonders of the Dungeon you killed " +
-                        player.getKilledMonsters() + " and reached level " + player.getLevel());
+        Player.writeDeadFile();
+
+        DisplayHeaders.youDiedHeader();
+        DisplayText.deadPlayerText(Game.player);
 
         if (!inGame == playAgain()) {
             game();
         }
+
     }
 
 }

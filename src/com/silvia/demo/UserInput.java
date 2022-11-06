@@ -7,24 +7,37 @@ import java.util.Scanner;
 
 public class UserInput {
 
+    protected static String welcomeText = "Whats your name my faithful comrade?";
+    protected static String toLongText = "Your name is to long! Please enter a name with max 19 characters";
+    protected static String enterNameText = "Please enter your name";
+    protected static String invalidNumberText = "Invalid input! Please enter a number";
+    protected static String invalidInputText = "Invalid input! Please enter /'Y/' or /'N/'";
+    protected static String continueKeyText = "Enter any key and Enter to continue";
+
     private static final Scanner scan = new Scanner(System.in, StandardCharsets.UTF_8);
 
     static String playersName() {
-        System.out.printf("%s%s\t\t\t\t  Whats your name my faithful comrade?  \t\t\t\t %s\n",
-                PrintColor.ANSI_BG_BLACK, PrintColor.ANSI_YELLOW, PrintColor.ANSI_RESET );
+        System.out.printf("%s%s\t\t\t\t  %s  \t\t\t\t %s\n",
+                PrintColor.ANSI_BG_BLACK, PrintColor.ANSI_YELLOW, welcomeText, PrintColor.ANSI_RESET );
         String name = scan.nextLine();
 
         do {
             if (name.length() > 19) {
-                System.out.println("Your name is to long! Please enter a name with max 19 characters");
+                System.out.printf("%s%s%s\t\t %s\n",
+                        PrintColor.ANSI_BG_BLACK, PrintColor.ANSI_WHITE, toLongText, PrintColor.ANSI_RESET );
+
                 name = scan.nextLine();
             }
             if (name.isEmpty()) {
-                System.out.println("Please enter your name");
+                System.out.printf("%s%s%s\t\t\t\t\t\t\t\t\t\t\t\t\t %s\n",
+                        PrintColor.ANSI_BG_BLACK, PrintColor.ANSI_WHITE, enterNameText, PrintColor.ANSI_RESET );
+
                 name = scan.nextLine();
             }
             if (name.isBlank()) {
-                System.out.println("Please enter your name");
+                System.out.printf("%s%s%s\t\t\t\t\t\t\t\t\t\t\t\t\t %s\n",
+                        PrintColor.ANSI_BG_BLACK, PrintColor.ANSI_WHITE, enterNameText, PrintColor.ANSI_RESET );
+
                 name = scan.nextLine();
             }
 
@@ -38,7 +51,8 @@ public class UserInput {
         int number;
         do {
             while (!scan.hasNextInt()) {
-                System.out.println("Invalid input! Please enter a number");
+                System.out.printf("%s%s%s\t\t\t\t\t\t\t\t\t %s\n",
+                        PrintColor.ANSI_BG_BLACK, PrintColor.ANSI_WHITE, invalidNumberText, PrintColor.ANSI_RESET );
                 scan.next();
             }
             number = scan.nextInt();
@@ -65,7 +79,8 @@ public class UserInput {
                 validInput = true;
 
             } else if (!validInput) {
-                System.out.println("Invalid input! Please enter /'Y/' or /'N/'");
+                System.out.printf("%s%s%s\t\t\t\t\t\t\t\t %s\n",
+                        PrintColor.ANSI_BG_BLACK, PrintColor.ANSI_WHITE, invalidInputText, PrintColor.ANSI_RESET );
             }
 
         } while (!validInput);
@@ -74,7 +89,9 @@ public class UserInput {
     }
 
     static void continueGame() {
-        System.out.println("Enter any key and Enter to continue");
+
+        System.out.printf("%s%s%s\t\t\t\t\t\t\t\t\t\t %s\n",
+                PrintColor.ANSI_BG_BLACK, PrintColor.ANSI_WHITE, continueKeyText, PrintColor.ANSI_RESET );
 
         scan.next();
     }

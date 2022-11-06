@@ -49,7 +49,7 @@ public class Menu {
 
         System.out.printf(
                 "%s%s\t\t  " + (1) + ". " + startMenuList.get(0) + "\t\t" + (2) + ". " + startMenuList.get(1) +
-                "\t\t" + (3) + ". " + startMenuList.get(2) + "\t\t" + (4) + ". " + startMenuList.get(3) + "\t\t\t\t %s%n",
+                        "\t\t" + (3) + ". " + startMenuList.get(2) + "\t\t" + (4) + ". " + startMenuList.get(3) + "\t\t\t\t %s%n",
                 PrintColor.ANSI_BG_RED, PrintColor.ANSI_BLACK, PrintColor.ANSI_RESET);
 
         DisplayHeaders.underLine();
@@ -91,13 +91,29 @@ public class Menu {
         DisplayHeaders.underLine();
     }
 
-    protected static void displayYesNoMenu(String question) {
-        System.out.println(question);
-        System.out.println("\u001B[40m========================\u001B[0m");
+    protected static void  displayYesNoMenu(String question) {
+        System.out.printf("%s\t\t\t\t\t\t%s%s\t\t\t\t\t\t %s\n",
+                PrintColor.ANSI_BRIGHT_BG_WHITE, question, PrintColor.ANSI_BRIGHT_BG_WHITE, PrintColor.ANSI_RESET);
+        System.out.printf("%s\t\t\t\t\t\t%s========================%s\t\t\t\t\t\t %s\n",
+                PrintColor.ANSI_BRIGHT_BG_WHITE, PrintColor.ANSI_BG_BLACK, PrintColor.ANSI_BRIGHT_BG_WHITE,
+                PrintColor.ANSI_RESET);
+
+        System.out.printf("%s\t\t\t\t\t\t",
+                PrintColor.ANSI_BRIGHT_BG_WHITE);
+
         for (String s : yesNoMenuList) {
-            System.out.print("\u001B[41m\u001B[30m   " + s + "\t\u001B[0m");
+            System.out.printf("%s%s   " + s + "\t%s",
+                    PrintColor.ANSI_BG_RED, PrintColor.ANSI_BLACK,PrintColor.ANSI_RESET);
         }
-        System.out.println("\n\u001B[40m========================\u001B[0m");
+
+        System.out.printf("%s\t\t\t\t\t\t %s\n",
+                PrintColor.ANSI_BRIGHT_BG_WHITE, PrintColor.ANSI_RESET);
+
+        System.out.printf("%s\t\t\t\t\t\t%s========================%s\t\t\t\t\t\t %s\n",
+                PrintColor.ANSI_BRIGHT_BG_WHITE, PrintColor.ANSI_BG_BLACK, PrintColor.ANSI_BRIGHT_BG_WHITE,
+                PrintColor.ANSI_RESET);
+        DisplayHeaders.blankLine(PrintColor.ANSI_BRIGHT_BG_WHITE);
+        DisplayHeaders.underLine();
     }
 
     public static void startMenu() {
@@ -161,7 +177,7 @@ public class Menu {
 
         switch (Menu.chosenStatusMenu) {
             case 1 ->
-                statusPlayerDisplay(Game.player.getPotionList());
+                    statusPlayerDisplay(Game.player.getPotionList());
 
             case 2 ->
                     System.out.println("BACK!");
@@ -269,7 +285,5 @@ public class Menu {
         } while (!selected);
 
     }
-
-
 
 }

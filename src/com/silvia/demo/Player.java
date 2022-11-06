@@ -94,16 +94,15 @@ public class Player extends Fighter implements ICombat {
     public boolean died() {
         DisplayText.playerDeadText();
 
-        writeDeadFile();
-
         return false;
     }
 
-    public void writeDeadFile() {
+    public static void writeDeadFile() {
         WriteFileSystem writeFileSystem = new WriteFileSystem();
 
         writeFileSystem.createMyFile();
-        writeFileSystem.writeMyFile(getFighterName(), getKilledMonsters(), getLevel(), getWeaponList());
+        writeFileSystem.writeMyFile(Game.player.getFighterName(), Game.player.getKilledMonsters(),
+                Game.player.getLevel(), Game.player.getWeaponList());
     }
 
     public void playerWins(GameItem dropped) {
